@@ -47,7 +47,6 @@ sudo chmod 644 /Library/LaunchDaemons/removeAdmin.plist
 
 #Load the daemon 
 launchctl load /Library/LaunchDaemons/removeAdmin.plist
-sleep 10
 
 #########################
 # make file for removal #
