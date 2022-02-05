@@ -65,6 +65,7 @@ fi
 ##################################
 
 /usr/sbin/dseditgroup -o edit -a $currentUser -t user admin
+echo "$currentUser ALL=(ALL) ALL" >> /etc/sudoers.d/sudoers
 
 ########################################
 # write a script for the launch daemon #
@@ -76,6 +77,7 @@ cat << 'EOF' > /Library/Application\ Support/JAMF/removeAdminRights.sh
 if [[ -f /private/var/userToRemove/user ]]; then
 	userToRemove=$(cat /private/var/userToRemove/user)
 	echo "Removing $userToRemove's admin privileges"
+	rm /etc/sudoers.d/sudoers
 	/usr/sbin/dseditgroup -o edit -d $userToRemove -t user admin
 	rm -f /private/var/userToRemove/user
 	launchctl unload /Library/LaunchDaemons/removeAdmin.plist
