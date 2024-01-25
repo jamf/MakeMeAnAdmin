@@ -17,7 +17,7 @@
 #############################################
 # find the logged in user and let them know #
 #############################################
-
+Testin things
 currentUser=$(who | awk '/console/{print $1}')
 echo $currentUser
 
